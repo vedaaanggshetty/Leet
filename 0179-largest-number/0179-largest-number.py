@@ -11,8 +11,9 @@ class Solution(object):
             else:
                 return 1
         nums = sorted(nums, key = cmp_to_key(compare))  #[9,5,32,3]
-    
-        return str(int("".join(nums)))
+        if nums[0] == "0":
+            return "0"
+        return "".join(nums)
 
 
     

@@ -12,7 +12,7 @@ class Solution(object):
                 return 1
         nums = sorted(nums, key = cmp_to_key(compare))  #[9,5,32,3]
     
-        return "".join(nums)
+        return str(int("".join(nums)))
 
 
     

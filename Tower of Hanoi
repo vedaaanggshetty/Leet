@@ -1,0 +1,13 @@
+def toh(n, Source, Auxiliary, Destination):
+        if n == 1:
+            #"move disk %d from %s to %s" % (disk, source, dest
+            print(f"Move Disk 1 from {Source} to {Destination}")
+            return
+            
+        toh(n-1, Source,  Destination, Auxiliary)
+        print(f"Move Disk {n} from {Source} to {Destination}")
+        toh(n-1, Auxiliary, Source, Destination)
+        
+if __name__ == "__main__":
+        n = int(input("Enter the Number of Disks : "))
+        toh(n, 'Source','Auxiliary','Destination')

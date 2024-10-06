@@ -1,0 +1,31 @@
+def equalRowColPairs(mat, n):
+    count = 0
+    
+    # Iterate through each row and compare with the corresponding column
+    for i in range(n):
+        # Get the i-th row
+        row = mat[i]
+        
+        # Get the i-th column by extracting the i-th element from each row
+        col = [mat[j][i] for j in range(n)]
+        
+        # Compare the row and column
+        if row == col:
+            count += 1
+    
+    return count
+
+if __name__ == "__main__":
+    # Input the size of the matrix
+    n = int(input())
+    
+    # Input the matrix row by row
+    mat = []
+    for _ in range(n):
+        mat.append(list(map(int, input().split())))
+    
+    # Get the number of equal row-column pairs
+    result = equalRowColPairs(mat, n)
+    
+    # Output the result
+    print(result)

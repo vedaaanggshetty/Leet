@@ -10,13 +10,7 @@
 </pre>
 <p>&nbsp;</p>
 <p><strong>Constraints:</strong></p>
-<p>
-	Step 1: The frequency map is {1: 3, 2: 2, 3: 1}.
-Step 2: The buckets list would look like this:
-buckets = [[], [3], [2], [1], [], []]
-Step 3: Starting from the right (i.e., buckets[3]), we add the element 1 (which appears 3 times), and then move to buckets[2] and add the element 2 (which appears 2 times).
-Step 4: The result will be [1, 2].
-</p>
+
 <ul>
 	<li><code>1 &lt;= nums.length &lt;= 10<sup>5</sup></code></li>
 	<li><code>-10<sup>4</sup> &lt;= nums[i] &lt;= 10<sup>4</sup></code></li>

@@ -14,4 +14,9 @@ class Solution(object):
                 if len(res) == k:
                     return res
 
-        
+#      #	Step 1: The frequency map is {1: 3, 2: 2, 3: 1}.
+# Step 2: The buckets list would look like this:
+# buckets = [[], [3], [2], [1], [], []]
+# Step 3: Starting from the right (i.e., buckets[3]), we add the element 1 (which appears 3 times), and then move to buckets[2] and add the element 2 (which appears 2 times).
+# Step 4: The result will be [1, 2].
+#    

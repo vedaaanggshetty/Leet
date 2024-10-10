@@ -4,7 +4,7 @@ class Solution(object):
         freq_map = Counter(nums)  # Hash[3,2,1]
         buckets = [[] for _ in range(len(nums) + 1)] # buckets = [[] , [], [], []]
 
-        for freq, num in freq_map.items():
+        for num, freq in freq_map.items():
             buckets[freq].append(num)  # buckets[3].append(1) = buckets = [[],[],[],[3],[]]
 
         res = []

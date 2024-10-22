@@ -28,9 +28,9 @@ class Solution(object):
         last = 0
 
         for i in range(1,n):
-            if nums[i] == nums[i-1] + 1:
-                seq += nums[i]
-                last  = i
+            if nums[i] == nums[i-1] + 1: # 2 = 1 + 1
+                seq += nums[i] # 1 += 2 => 3
+                last  = i # last = 1
             else:
                 break
         

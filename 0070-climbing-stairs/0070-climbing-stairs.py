@@ -1,11 +1,18 @@
 class Solution(object):
     def climbStairs(self, n):
-        if (n == 1 or n == 2 or n == 3):
-            return n
-        dp = [0] * (n+1)
-        dp[1] = 1
-        dp[2] = 2
+        if n == 1:
+            return 1
+        elif n == 2:
+            return 2
 
-        for i in range(3, n+1):
-            dp[i] = dp[i-1] + dp[i-2]
-        return dp[n]
+        # Initialize the base cases for n = 1 and n = 2
+        first = 1
+        second = 2
+        
+        # Iterate from 3 to n, updating the number of ways dynamically
+        for i in range(3, n + 1):
+            current = first + second
+            first = second
+            second = current
+        
+        return second

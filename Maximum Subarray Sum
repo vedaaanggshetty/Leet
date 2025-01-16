@@ -1,0 +1,10 @@
+#User function Template for python3
+class Solution:
+    def pairWithMaxSum(self, arr):
+        # sortedArray = sorted(arr)
+        maxSub = -9999999999
+        # maxSub = float('-inf')
+        for i in range(len(arr) - 1):
+            curSum = (arr[i] + arr[i+1])
+            maxSub = max(curSum, maxSub)
+        return maxSub

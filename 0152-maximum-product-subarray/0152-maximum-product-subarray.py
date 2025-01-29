@@ -1,9 +1,13 @@
-class Solution(object):
+class Solution:
     def maxProduct(self, nums):
-        maxPro = 1
         res = nums[0]
-        for n in nums:
-            maxPro = max(n*maxPro,n)
-            res = max(res, maxPro)
+        n = len(nums)
+        for i in range(n):
+            p = nums[i]
+            if p > res:
+                res = p
+            for j in range(i+1,n):
+                p = p * nums[j]
+                if p > res:
+                    res = p
         return res
-        

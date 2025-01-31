@@ -4,7 +4,6 @@ class Solution(object):
         # if numLen % 2 != 0:
         #     continue
         j = n
-        # res = [nums[0]]
         res=[]
         for i in range(numLen):
             res.append(nums[i])

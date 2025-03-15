@@ -13,5 +13,7 @@ class Solution(object):
                 while r<n-1 and arr[r+1] < arr[r]:
                     r += 1
                 res = max(res, r-l+1)
-        
+                # if [2,2,2]
+                # if l < i and i > r:
+                #  res = max(res, r-l+1)
         return res

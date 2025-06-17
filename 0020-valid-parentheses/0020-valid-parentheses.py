@@ -1,15 +1,14 @@
 class Solution(object):
     def isValid(self, s):
-         stack = []
-         open = { ")" : "(" , "]" : "[" , "}" : "{" }
+        # Stack Approach with 0(1) time lookup
 
-         for c in s:
-            if c in open:
-                if stack and stack[-1] == open[c]:
-                    stack.pop()
-                else:
-                    return False
+        stack = []
+        mapp = { ')' : '(', '}' : '{', ']' : '['}
+
+        for i in s:
+            if stack and (i in mapp) and stack[-1] == mapp[i]:
+                stack.pop()
             else:
-                stack.append(c)
-         
-         return True if not stack else False
+                stack.append(i)
+        
+        return True if not stack else False

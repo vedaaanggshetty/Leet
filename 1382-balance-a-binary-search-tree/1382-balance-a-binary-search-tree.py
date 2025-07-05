@@ -10,19 +10,22 @@ class Solution(object):
         :type root: Optional[TreeNode]
         :rtype: Optional[TreeNode]
         """
-        def inorder(node):
+        # Inorder traversal
+        
+        def BT(node):
             if not node:
                 return []
-            return inorder(node.left) + [node.val] + inorder(node.right)
-        
-        def build_balanced_bst(vals):
-            if not vals:
-                return None
-            mid = len(vals) // 2
-            node = TreeNode(vals[mid])
-            node.left = build_balanced_bst(vals[:mid])
-            node.right = build_balanced_bst(vals[mid+1:])
-            return node
+            return BT(node.left) +  [node.val] + BT(node.right)
 
-        sorted_vals = inorder(root)
-        return build_balanced_bst(sorted_vals)
+
+        def BST(nums):
+            if not nums:
+                return None
+            m = len(nums)//2
+            root = TreeNode(nums[m])
+            root.left = BST(nums[:m])
+            root.right = BST(nums[m+1:])
+            return root
+        
+        sorrted = BT(root)
+        return BST(sorrted)

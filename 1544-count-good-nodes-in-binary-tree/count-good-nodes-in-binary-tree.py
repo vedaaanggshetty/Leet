@@ -6,13 +6,13 @@
 #         self.right = right
 class Solution(object):
     def goodNodes(self, root):
-        def dfs(node, max_val):
+        def dfs(node, maxx):
             if not node:
                 return 0
-            count = 1 if node.val >= max_val else 0
-            max_val = max(max_val, node.val)
-            count += dfs(node.left, max_val)
-            count += dfs(node.right, max_val)
-            return count
+            c = 1 if node.val >= maxx else 0 
+            maxx = max(maxx, node.val)           
+            c += dfs(node.left, maxx)
+            c += dfs(node.right, maxx)
 
+            return c
         return dfs(root, root.val)

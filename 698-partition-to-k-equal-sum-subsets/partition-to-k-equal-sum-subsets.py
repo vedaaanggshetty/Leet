@@ -1,42 +1,27 @@
 class Solution(object):
     def canPartitionKSubsets(self, nums, k):
-        """
-        :type nums: List[int]
-        :type k: int
-        :rtype: bool
-        """
-
         if sum(nums) % k != 0:
             return False
+        total = sum(nums) // k
+        visit = [False] * len(nums)
+        nums.sort(reverse=True)
 
-        nums.sort(reverse = True)
-        target = sum(nums) / k
-        visited= set()
-
-        def backtrack(idx, count, currSum):
-            if count == k:
+        def BT(i, k, subSum):
+            if k == 0:
                 return True
+            if subSum == total:
+                return BT(0, k-1, 0)
 
-            if target == currSum:
-                return backtrack(0, count + 1, 0)
-
-            for i in range(idx, len(nums)):
-                
-                # skip duplicates if last same number was skipped
-                if i > 0 and (i - 1) not in visited and nums[i] == nums[i - 1]:
+            for j in range(i, len(nums)):
+                if visit[j] or subSum + nums[j] > total:
                     continue
-
-                if i in visited or currSum + nums[i] > target:
-                    continue
-
-                visited.add(i)
-
-                if backtrack(i + 1, count, currSum + nums[i]):
+                visit[j] = True
+                if BT(j+1, k, subSum + nums[j]):
                     return True
-                
-                visited.remove(i)
+                visit[j] = False
+
+                if subSum == 0: break
 
             return False
 
-
-        return backtrack(0, 0, 0)
+        return BT(0, k, 0)

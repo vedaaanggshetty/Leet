@@ -7,9 +7,17 @@ class Solution(object):
         """
         row = len(matrix)
         col = len(matrix[0])
-
-        for i in range(row):
-            for j in range(col):
-                if matrix[i][j] == target:
-                    return True
+        l = 0 
+        r = row * col - 1
+        while l <= r:
+            m = (l + r) // 2
+            mVal = matrix[m // col][m % col]
+            
+            if mVal == target:
+                return True
+            
+            elif mVal < target:
+                l = m + 1
+            else:
+                r = m - 1
         return False

@@ -1,6 +1,6 @@
 class Solution(object):
     def maxProfit(self, prices):
-        A = -prices[0] 
+        A = -999999 
         B = float('-inf')
         C = float('-inf')
         D = float('-inf')

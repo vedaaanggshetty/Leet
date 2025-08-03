@@ -10,7 +10,7 @@ class Solution(object):
 
             for j in range(i, n):
                 w = s[i:j+1]
-                if w in ss:
+                if w in wordDict:
                     curr.append(w)
                     BT(j+1)
                     curr.pop()

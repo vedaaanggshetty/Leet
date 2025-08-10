@@ -17,4 +17,4 @@ class Solution(object):
 
         while string in s:
             s = s.replace(string, "")
-        return s == ""
+        return not s

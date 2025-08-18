@@ -1,11 +1,31 @@
 class Solution(object):
     def searchRange(self, nums, target):
-        if target not in nums:
+        def ge(x):
+            lo = 0
+
+            hi = len(nums)
+            while lo < hi:
+                mid = ( lo + hi ) // 2
+                if nums[mid] < x:
+                    lo = mid + 1
+                else:
+                    hi = mid
+            return lo
+        
+        def gt(x):
+            lo = 0
+            hi = len(nums)
+            while lo < hi:
+                mid = ( lo + hi ) // 2
+                if nums[mid] <= x:
+                    lo = mid + 1
+                else:
+                    hi = mid
+            return lo
+
+        left = ge(target)
+        if left == len(nums) or nums[left] != target:
             return [-1,-1]
         
-        start = nums.index(target)
-        end = len(nums) - 1 - nums[::-1].index(target)
-
-        return [start, end]
-
-        
+        right = gt(target) - 1
+        return [left, right]

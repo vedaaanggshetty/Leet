@@ -1,21 +1,23 @@
+from collections import defaultdict
 class Solution(object):
     def isValidSudoku(self, board):
-        cols = collections.defaultdict(set)
-        rows = collections.defaultdict(set)
-        squares = collections.defaultdict(set)  # key = (r /3, c /3)
+        row = defaultdict(set)
+        col = defaultdict(set)
+        sqr = defaultdict(set)
 
+        # iterate thru the grid
         for r in range(9):
             for c in range(9):
-                if board[r][c] == ".":
+                val = board[r][c]
+                if (val in row[r] 
+                or val in col[c] 
+                or val in sqr[(r//3 , c//3)]):
+                    return False            
+                # if cond
+                if val == ".":
                     continue
-                if (
-                    board[r][c] in rows[r]
-                    or board[r][c] in cols[c]
-                    or board[r][c] in squares[(r // 3, c // 3)]
-                ):
-                    return False
-                cols[c].add(board[r][c])
-                rows[r].add(board[r][c])
-                squares[(r // 3, c // 3)].add(board[r][c])
-
+                # something here
+                col[c].add(val)
+                row[r].add(val)
+                sqr[(r//3, c//3)].add(val)
         return True

@@ -1,17 +1,19 @@
 class Solution(object):
     def subsets(self, nums):
         res = []
-        sub = []
-        def BT(i):
-            if i >= len(nums):
-                # res.append(sub.copy())
-                res.append(sub[:])
+
+        def BT(i, sub):
+            if i == len(nums):
+                res.append(list(sub))
                 return 
-            
+
+            BT(i+1, sub)
+
             sub.append(nums[i])
-            BT(i+1)
-            
+            BT(i+1, sub) 
             sub.pop()
-            BT(i+1)
-        BT(0)
+
+
+
+        BT(0, [])
         return res

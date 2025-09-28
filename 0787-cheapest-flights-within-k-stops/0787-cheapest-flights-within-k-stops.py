@@ -9,8 +9,8 @@ class Solution(object):
 
             for s,d,p in flights:
 
-                if prices[s] == float('inf'):
-                    continue
+                # if prices[s] == float('inf'):
+                #     continue
                 if prices[s] + p < tmp[d]:
                     tmp[d] = prices[s] + p
             prices = tmp

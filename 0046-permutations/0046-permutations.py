@@ -2,18 +2,18 @@ class Solution(object):
     def permute(self, nums):
         res = []
 
-        def BT(p, arr):
+        def BT(p, seen):
             if len(p) == len(nums):
                 res.append(p[:])
-                return
+                return 
 
             for i in range(len(nums)):
-                if not arr[i]:
-                    arr[i] = True
+                if i not in seen:
+                    seen.add(i)
                     p.append(nums[i])
-                    BT(p, arr)           
+                    BT(p, seen)
                     p.pop()
-                    arr[i] = False
-
-        BT([], [False] * len(nums))
+                    seen.remove(i)
+            
+        BT([], set())
         return res

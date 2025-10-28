@@ -1,39 +1,35 @@
 class Solution(object):
     def myAtoi(self, s):
-        if not s:  # Edge case: Empty string
-            return 0
-
-        # Step 1: Trim leading whitespaces
-        s = s.lstrip()
-
-        if not s:  # If string is empty after stripping
-            return 0
-
-        # Step 2: Handle sign
+        import re
+        # ss = re.findall(r'[a-zA-Z]+').s
+        cc = s.lstrip()
         sign = 1
-        if s[0] in ('-', '+'):
-            if s[0] == '-':
-                sign = -1
-            s = s[1:]
 
-        # Step 3: Convert digits into number
+        if not cc:
+            return 0
+
+        if cc[0] == "+":
+            sign = 1
+            cc = cc[1:]
+        elif cc[0] == "-":
+            sign = -1 
+            cc = cc[1:]
+
         res = 0
-        for char in s:
-            if char.isdigit():
-                res = res * 10 + int(char)  # Correct formula
+        for c in cc:
+            if c.isdigit():
+                res = res * 10 + int(c)
             else:
                 break
-
-        # Step 4: Apply sign
+        
         res *= sign
 
-        # Step 5: Handle integer overflow
-        INT_MIN = -2**31
-        INT_MAX = 2**31 - 1
+        MAXX = 2 ** 31 -1
+        MINN = -2 ** 31
 
-        if res < INT_MIN:
-            return INT_MIN
-        if res > INT_MAX:
-            return INT_MAX
+        if res > MAXX:
+            return MAXX
+        elif res < MINN:
+            return MINN
 
         return res
